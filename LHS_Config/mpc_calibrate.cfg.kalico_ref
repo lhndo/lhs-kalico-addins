@@ -1,0 +1,11 @@
+#### Required for MPC calibration with AUX fan
+#### Uncomment the include at the bottom of printer.cfg before calibration
+
+[multi_pin fan_mpc]
+pins:PE5, PD12 # Part fan multipin which controls both toolhead and aux part fans
+
+[fan_generic aux]
+pin:PE15 # Dummy Pin to replace the aux pin
+
+[fan]
+pin:multi_pin:fan_mpc
