@@ -4,13 +4,13 @@
 </p>
 
 
-This branch provides the add-in files for the [Kalico - Bleeding Edge V2](https://github.com/KalicoCrew/kalico/tree/bleeding-edge-v2) branch which includes quality of life additions for the LH Stinger.  
+This repo provides add-in files for the [Kalico - Bleeding Edge V2](https://github.com/KalicoCrew/kalico/tree/bleeding-edge-v2) branch which provide quality of life additions for the LH Stinger 3D Printer.  
 
 
 
 ### Installation
 
-1. Make sure you have [kalico](https://github.com/KalicoCrew/kalico) installed, if not run: 
+1. Make sure you have [kalico](https://github.com/KalicoCrew/kalico) installed. If not, run: 
 ```
  cd ~
  git clone --branch bleeding-edge-v2 https://github.com/KalicoCrew/kalico.git ~/klipper
@@ -18,7 +18,9 @@ This branch provides the add-in files for the [Kalico - Bleeding Edge V2](https:
 
 *If you already have klipper mainline installed, you might have to remove it with:* `rm -rf ~/klipper` 
 
-2. Run the following installation script:
+<br>
+
+2. Copy and run the following installation script:
 
 ```
 cd ~
@@ -31,6 +33,8 @@ rm -rf ResHelper && git clone https://github.com/lhndo/ResHelper.git ResHelper
  ~/klippy-env/bin/pip install -r ~/klipper/scripts/klippy-requirements.txt
 sudo systemctl restart klipper
 ```
+
+<br>
 
 2. Port the differences from the provided **printer.cfg.kalico_ref** to your **printer.cfg**
    These files should already be present in your **config** folder
