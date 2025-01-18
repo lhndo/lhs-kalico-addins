@@ -10,7 +10,15 @@ This branch provides the add-in files for the [Kalico - Bleeding Edge V2](https:
 
 ### Installation
 
-1. Make sure you have [kalico](https://github.com/KalicoCrew/kalico) installed, then run the following installation script:
+1. Make sure you have [kalico](https://github.com/KalicoCrew/kalico) installed, if not run: 
+```
+ cd ~
+ git clone --branch bleeding-edge-v2 https://github.com/KalicoCrew/kalico.git ~/klipper
+ ```
+
+*If you already have klipper mainline installed, you might have to remove it with:* `rm -rf ~/klipper` 
+
+2. Run the following installation script:
 
 ```
 cd ~
@@ -25,6 +33,7 @@ sudo systemctl restart klipper
 ```
 
 2. Port the differences from the provided **printer.cfg.kalico_ref** to your **printer.cfg**
+   These files should already be present in your **config** folder
 
 <br>
 
