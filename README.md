@@ -26,6 +26,7 @@ This repo provides add-in files for the [Kalico - Bleeding Edge V2](https://gith
 cd ~
 git clone https://github.com/lhndo/lhs-kalico-addins lhs-kalico-addins
 ln -s ~/lhs-kalico-addins/LHS_Tools/switch_klipper/switch_klipper.sh ~/switch_klipper.sh
+chmod +x ~/switch_klipper.sh
 for file in ~/lhs-kalico-addins/LHS_Config/*; do ln -s "$file" ~/printer_data/config/$(basename "$file"); done
 for file in ~/lhs-kalico-addins/klippy/plugins/*; do ln -s "$file" ~/klipper/klippy/plugins/$(basename "$file"); done
 rm -rf ResHelper && git clone https://github.com/lhndo/ResHelper.git ResHelper

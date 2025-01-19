@@ -12,28 +12,19 @@ This switch is done by renaming the klipper folders and the configuration file.
 
 ### Requirements
 
-1. **Copy script to home folder:**
-
-```
-cd ~/klipper/LHS_Tools/switch_klipper/
-chmod +x switch_klipper.sh
-ln -s $(pwd)/switch_klipper.sh ~/switch_klipper.sh
-cd ~
-```
-
-2. **File Structure Setup**
+**File Structure Setup**
 
 
 
 * Currently running Kalico, you should have the following:  
 
-> Folders: **klipper/, klipper_ml/**  
+> Folders: **/klipper, /klipper_ml**  
 > Files: **printer.cfg, printer.cfg.ml**  
 
 
 * Currently running klipper mainline (default):  
 
-> Folders: **klipper/, klipper_kalico/**  
+> Folders: **klipper, klipper_kalico**  
 > Files: **printer.cfg, printer.cfg.kalico**  
 
 ## Usage
