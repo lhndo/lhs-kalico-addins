@@ -7,6 +7,9 @@
 # Place in `klippy/extras/` folder as `xz_dockable_probe.py`, then add
 # the following line to your `.git/info/exclude` file:
 # klippy/extras/xz_dockable_probe.py
+#
+# V1.01 Kalico - Conditionally perform Z-hop based on whether Z is requested @lhndo 
+
 
 import logging
 from .homing import HomingMove
@@ -48,7 +51,7 @@ class DockableProbe:
         self.park_dx = config.getint('park_delta_x')
         self.detach_dx = config.getint('detach_delta_x')
         self.z_hop = config.getint('z_hop', minval=0)
-        self.attachment_check_hop = config.get('attachment_check_hop', 5)
+        self.attachment_check_hop = config.get('attachment_check_hop', 8)
         self.z_speed = config.getint('z_speed', 30)
         self.xy_speed = config.getint('xy_speed', 70)
         self.hook_commands = config.getboolean('hook_commands', True)
@@ -127,7 +130,11 @@ class DockableProbe:
             # No axes wanted, ignore this
             return
 
-        self._do_z_hop(self.z_hop)
+        # Conditionally perform Z-hop based on whether Z is requested
+        if want_z:
+            self._do_z_hop(self.z_hop)  # Use standard Z-hop value if Z is requested
+        else:
+            self._do_z_hop(-self.attachment_check_hop)  # Use -5 if Z is not requested
 
         # Home X and Y first
         if want_x or want_y:
@@ -282,7 +289,7 @@ class DockableProbe:
         pos = toolhead.get_position()
         if self._is_homed('z'):
             if amount < 0:
-                amount = pos[2] - amount # Negative amount means relative
+                amount = pos[2] - amount  # Keep the special negative case behavior
             toolhead.manual_move([None, None, amount], self.z_speed)
         else:
             toolhead.set_position(pos, homing_axes=[2])
