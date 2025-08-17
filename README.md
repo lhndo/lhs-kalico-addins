@@ -10,34 +10,41 @@ This repo provides add-in files for the [Kalico - Bleeding Edge V2](https://gith
 
 ### Installation
 
-1. Make sure you have [kalico](https://github.com/KalicoCrew/kalico) installed. If not, run: 
-```
- cd ~
- git clone --branch bleeding-edge-v2 https://github.com/KalicoCrew/kalico.git ~/klipper
- ```
+1. If you already have klipper mainline installed, run the following:
+   ```
+   sudo systemctl stop klipper
+   mv ~/klipper ~/klipper_ml
+   cp ~/printer_data/config/printer.cfg ~/printer_data/config/printer.cfg.ml
+   ```   
 
-*If you already have klipper mainline installed, you might have to remove it with:* `rm -rf ~/klipper` 
+2. To install [kalico](https://github.com/KalicoCrew/kalico) run: 
+   ```
+   cd ~
+   git clone --branch bleeding-edge-v2 https://github.com/KalicoCrew/kalico.git ~/klipper
+   ```
 
-<br>
 
-2. Copy and run the following installation script:
-
-```
-cd ~
-git clone https://github.com/lhndo/lhs-kalico-addins lhs-kalico-addins
-ln -s ~/lhs-kalico-addins/LHS_Tools/switch_klipper/switch_klipper.sh ~/switch_klipper.sh
-chmod +x ~/switch_klipper.sh
-for file in ~/lhs-kalico-addins/LHS_Config/*; do ln -s "$file" ~/printer_data/config/$(basename "$file"); done
-for file in ~/lhs-kalico-addins/klippy/plugins/*; do ln -s "$file" ~/klipper/klippy/plugins/$(basename "$file"); done
-rm -rf ResHelper && git clone https://github.com/lhndo/ResHelper.git ResHelper
-~/ResHelper/install.sh
- ~/klippy-env/bin/pip install -r ~/klipper/scripts/klippy-requirements.txt
-sudo systemctl restart klipper
-```
 
 <br>
 
-2. Port the differences from the provided **printer.cfg.kalico_ref** to your **printer.cfg**
+3. For initial setup run the following installation script (this won't mess up your config):
+
+   ```
+   cd ~
+   git clone https://github.com/lhndo/lhs-kalico-addins lhs-kalico-addins
+   ln -s ~/lhs-kalico-addins/LHS_Tools/switch_klipper/switch_klipper.sh ~/switch_klipper.sh
+   chmod +x ~/switch_klipper.sh
+   for file in ~/lhs-kalico-addins/LHS_Config/*; do ln -s "$file" ~/printer_data/config/$(basename "$file"); done
+   for file in ~/lhs-kalico-addins/klippy/plugins/*; do ln -s "$file" ~/klipper/klippy/plugins/$(basename "$file"); done
+   rm -rf ResHelper && git clone https://github.com/lhndo/ResHelper.git ResHelper
+   ~/ResHelper/install.sh
+   ~/klippy-env/bin/pip install -r ~/klipper/scripts/klippy-requirements.txt
+   sudo systemctl restart klipper
+   ```
+
+<br>
+
+4. Port the differences from the provided **printer.cfg.kalico_ref** to your **printer.cfg**
    These files should already be present in your **config** folder
 
 <br>
